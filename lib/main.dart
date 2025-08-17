@@ -18,6 +18,7 @@ import 'package:share_plus/share_plus.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 import 'dart:ui';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:version/version.dart';
@@ -2162,7 +2163,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ],
               ),
               const SizedBox(height: 4),
-              Text("ID: ${user.chatId}", style: theme.textTheme.bodyMedium?.copyWith(color: theme.textTheme.bodyMedium?.color?.withOpacity(0.7))),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("ID: ${user.chatId}", style: theme.textTheme.bodyMedium?.copyWith(color: theme.textTheme.bodyMedium?.color?.withOpacity(0.7))),
+                  IconButton(
+                    icon: Icon(LucideIcons.copy, size: 16),
+                    onPressed: () {
+                      Clipboard.setData(ClipboardData(text: user.chatId.toString()));
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text('ID nusxalandi: ${user.chatId}')),
+                      );
+                    },
+                  ),
+                ],
+              ),
             ],
           ),
           const SizedBox(height: 24),

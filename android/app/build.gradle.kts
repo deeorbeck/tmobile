@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.nftmobile"
+    namespace = "uz.uniquepros.tmobile"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = "27.0.12077973"
 
@@ -30,12 +30,28 @@ android {
         versionName = flutter.versionName
     }
 
-    buildTypes {
-        release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig = signingConfigs.getByName("debug")
+    signingConfigs {
+        create("release") {
+            storeFile = file("../../mykey.jks")  // .jks (keystore) faylingiz joylashgan manzil
+            storePassword = "tmobile362003@"     // keystore paroli
+            keyAlias = "myalias"                     // keystore ichidagi alias nomi
+            keyPassword = "tmobile362003@"       // shu alias uchun parol
         }
+    }
+
+
+    buildTypes {
+	release {
+	
+            isMinifyEnabled = true
+
+            // keraksiz resurslarni olib tashlash yoqilsin
+            isShrinkResources = true
+
+            // keystore bilan imzolash
+            signingConfig = signingConfigs.getByName("release")
+        }
+
     }
 }
 
