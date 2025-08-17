@@ -48,7 +48,7 @@ Loyihani mahalliy kompyuteringizda ishga tushirish uchun quyidagi amallarni baja
 
 1.  **Repozitoriyni klonlash:**
     ```bash
-    git clone https://github.com/your-username/nftmobile.git # Repozitoriy manzilingizni o'zgartiring
+    git clone https://github.com/deeorbeck/nftmobile.git # Repozitoriy manzilingizni o'zgartiring
     cd nftmobile
     ```
 
